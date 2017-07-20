@@ -18,6 +18,21 @@
 
 static ARouter *defaultRouter = nil;
 
++ (BOOL)selfChecking
+{
+    NSString* a1 = @"\n======================================\n ARouter \n======================================\n";
+    
+    NSString* a2 = @"\n 自检完成..\n";
+    
+    NSLog(@"%@%@",a1,a2);
+    if ([[ARouter global].scheme isEqualToString:@"test"]) NSLog(@"\n[ARouter]Warning:我们发现scheme为默认的test!\n");
+    
+    NSLog(@"\n 从UIViewController动态增加了属性和方法:\n@selector(router_info)\n@selector(setupDefualtParams)\n@selector(custom_viewDidLoad)\n\n======================================\n ARouter \n======================================\n");
+    
+    
+    return YES;
+}
+
 + (instancetype)global
 {
     static dispatch_once_t onceToken;

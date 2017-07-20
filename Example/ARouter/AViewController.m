@@ -19,13 +19,15 @@
 {
     [super viewDidLoad];
 
-    [ARouter global].globalNav = self.navigationController;
+    [ARouter selfChecking];
+//    [ARouter global].nav = self.navigationController;
+//    
+//    dispatch_after(2, dispatch_get_main_queue(), ^{
+//        [ARouter handle:@"test://push?target=AViewController&a=1"];
+//    });
+//    
+//    NSLog(@"%@",self.a);
     
-    dispatch_after(2, dispatch_get_main_queue(), ^{
-        [ARouter handle:@"test://push?target=AViewController&a=1"];
-    });
-    
-    NSLog(@"%@",self.a);
 }
 
 - (void)didReceiveMemoryWarning

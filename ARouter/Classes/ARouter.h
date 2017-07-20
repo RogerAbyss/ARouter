@@ -23,8 +23,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ARouter : NSObject
 
 @property (nonatomic, strong) NSString* scheme;
-@property (nonatomic, weak) UINavigationController* globalNav;
+@property (nonatomic, weak) UINavigationController* nav;
 
++ (BOOL)selfChecking;
 + (instancetype)global;
 
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
