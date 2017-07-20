@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'ARouter_Example' do
+  pod 'ARouter', :path => '../'
+
+  target 'ARouter_Tests' do
+    inherit! :search_paths
+
+    pod 'FBSnapshotTestCase'
+  end
+end
