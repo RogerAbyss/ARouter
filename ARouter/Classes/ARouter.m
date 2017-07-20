@@ -9,6 +9,8 @@
 #import "ARouter.h"
 #import "ARouterProtocol.h"
 
+#import "ARouterProtocolPush.h"
+
 @interface ARouter ()
 @property (nonatomic, strong) NSMutableSet* rules;
 @end
@@ -21,6 +23,9 @@ static ARouter *defaultRouter = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         defaultRouter = [[ARouter alloc] initWithDefualtSetting];
+        
+        [defaultRouter addRule:[ARouterProtocolPush new]];
+        defaultRouter.scheme = @"test";
     });
     
     return defaultRouter;
@@ -42,29 +47,29 @@ static ARouter *defaultRouter = nil;
 
 - (BOOL)handle:(UIApplication *)app url:(NSURL *)url option:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)option
 {
-    NSURLComponents* components = [NSURLComponents componentsWithString:url.absoluteString];
+    return ![ARouter handle:url.absoluteString];
+}
+
++ (BOOL)handle:(NSString *)url
+{
+    NSURLComponents* components = [NSURLComponents componentsWithString:url];
     
     if ([components.scheme isEqualToString:[ARouter global].scheme])
     {
         NSString* operation = components.host;
         
-        for (ARouterProtocol* rule in self.rules)
+        for (ARouterProtocol* rule in [ARouter global].rules)
         {
             if ([rule.operation isEqualToString:operation])
             {
                 [rule handle:components.queryItems];
             }
         }
-    
-        return NO;
+        
+        return YES;
     }
     
-    return YES;
-}
-
-- (id)link:(NSString *)compenent with:(NSDictionary * __nullable)params
-{
-    return nil;
+    return NO;
 }
 
 @end

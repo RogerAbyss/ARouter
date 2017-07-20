@@ -10,6 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ 直接在UIViewController上添加支持,强侵略性,慎用
+ 这样的好处在于支持控制全局跳转
+ 内部为runtime动态方法,性能影响不大
+ */
 @interface UIViewController (ARouter)
 @property (nonatomic, strong) NSDictionary *router_info;
 @end

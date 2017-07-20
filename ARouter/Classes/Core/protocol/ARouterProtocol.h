@@ -1,5 +1,5 @@
 //
-//  CRRouterRule.h
+//  ARouterRule.h
 //  Pods
 //
 //  Created by Abyss on 2017/6/3.
@@ -15,9 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
  *  [scheme]://[operation]?[param]
  */
 
-@interface CRRouterProtocol : NSObject
+@interface ARouterProtocol : NSObject
+
 - (NSString *)operation;
 - (void)handle:(NSArray<NSURLQueryItem *> *)queryItems;
+
 @end
 
 NS_ASSUME_NONNULL_END

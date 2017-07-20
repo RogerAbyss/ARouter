@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ARouter : NSObject
 
 @property (nonatomic, strong) NSString* scheme;
+@property (nonatomic, weak) UINavigationController* globalNav;
 
 + (instancetype)global;
 
@@ -34,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 /** handle
  此方法不能实现App跳转
  */
-+ (BOOL)handle:(NSURL *)url;
++ (BOOL)handle:(NSString *)url;
 
 /** handle
  通过系统的url方法处理

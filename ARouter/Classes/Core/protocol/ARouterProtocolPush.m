@@ -7,6 +7,7 @@
 //
 
 #import "ARouterProtocolPush.h"
+#import "ARouter.h"
 
 #import "UIViewController+ARouter.h"
 #import "JSONKit.h"
@@ -14,11 +15,6 @@
 static UINavigationController* default_router_nav = nil;
 
 @implementation ARouterProtocolPush
-
-+ (void)setGlobalNavController:(UINavigationController *)nav
-{
-    default_router_nav = nav;
-}
 
 - (NSString *)operation
 {
@@ -39,7 +35,6 @@ static UINavigationController* default_router_nav = nil;
         }
         else
         {
-            NSLog(@"%@ %@",item.name,item.value);
             if (!info)
             {
                 info = [NSMutableDictionary dictionary];
@@ -66,15 +61,15 @@ static UINavigationController* default_router_nav = nil;
         
         if (target)
         {
-            if (!default_router_nav)
+            if (![ARouter global].globalNav)
             {
-                NSLog(@"use +(void)setGlobalNavController:");
+                NSLog(@"[ARouter]:please set globalNav");
                 return;
             }
             
             if (models > 0)
             {
-                list = [NSMutableArray arrayWithArray:default_router_nav.viewControllers];
+                list = [NSMutableArray arrayWithArray:[ARouter global].globalNav.viewControllers];
                 for (NSString* m in models)
                 {
                     UIViewController* c = [NSClassFromString(m) new];
@@ -94,7 +89,7 @@ static UINavigationController* default_router_nav = nil;
                 target.router_info = info;
             }
             
-            default_router_nav.viewControllers = list;
+            [ARouter global].globalNav.viewControllers = list;
         }
     }
 }

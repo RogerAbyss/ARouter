@@ -7,9 +7,10 @@
 //
 
 #import "AViewController.h"
+#import "ARouter.h"
 
 @interface AViewController ()
-
+@property (nonatomic, copy) NSString* a;
 @end
 
 @implementation AViewController
@@ -17,7 +18,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+
+    [ARouter global].globalNav = self.navigationController;
+    
+    dispatch_after(2, dispatch_get_main_queue(), ^{
+        [ARouter handle:@"test://push?target=AViewController&a=1"];
+    });
+    
+    NSLog(@"%@",self.a);
 }
 
 - (void)didReceiveMemoryWarning
