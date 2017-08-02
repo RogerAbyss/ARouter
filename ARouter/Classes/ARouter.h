@@ -17,6 +17,7 @@
  需要路由
  */
 
+#define APP_ROUTER [ARouter default]
 @class ARouterProtocol;
 NS_ASSUME_NONNULL_BEGIN
 
@@ -26,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) UINavigationController* nav;
 
 + (BOOL)selfChecking;
-+ (instancetype)global;
++ (instancetype)default;
 
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 + (instancetype)new UNAVAILABLE_ATTRIBUTE;

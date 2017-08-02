@@ -61,7 +61,7 @@ static UINavigationController* default_router_nav = nil;
         
         if (target)
         {
-            if (![ARouter global].nav)
+            if (!APP_ROUTER.nav)
             {
                 NSLog(@"[ARouter]:please set globalNav");
                 return;
@@ -69,7 +69,7 @@ static UINavigationController* default_router_nav = nil;
             
             if (models > 0)
             {
-                list = [NSMutableArray arrayWithArray:[ARouter global].nav.viewControllers];
+                list = [NSMutableArray arrayWithArray:APP_ROUTER.nav.viewControllers];
                 for (NSString* m in models)
                 {
                     UIViewController* c = [NSClassFromString(m) new];
@@ -89,7 +89,7 @@ static UINavigationController* default_router_nav = nil;
                 target.router_info = info;
             }
             
-            [ARouter global].nav.viewControllers = list;
+            APP_ROUTER.nav.viewControllers = list;
         }
     }
 }

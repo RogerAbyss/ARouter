@@ -7,7 +7,7 @@
 //
 
 #import "AViewController.h"
-#import "ARouter.h"
+#import <ARouter/ARouter.h>
 
 @interface AViewController ()
 @property (nonatomic, copy) NSString* a;
@@ -20,20 +20,21 @@
     [super viewDidLoad];
 
     [ARouter selfChecking];
-//    [ARouter global].nav = self.navigationController;
-//    
-//    dispatch_after(2, dispatch_get_main_queue(), ^{
-//        [ARouter handle:@"test://push?target=AViewController&a=1"];
-//    });
-//    
-//    NSLog(@"%@",self.a);
+    APP_ROUTER.nav = self.navigationController;
     
+//    [ARouter handle:@"test://push?target=AViewController&a=1"];
+    [ARouter handle:@"test://perform?target=AViewController&method=hello"];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
++ (void)hello
+{
+    NSLog(@"hello");
 }
 
 @end

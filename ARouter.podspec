@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ARouter'
-  s.version          = '0.1.3'
+  s.version          = '0.1.4'
   s.summary          = 'ARouter'
 
 # This description is used to generate tags and improve search results.
@@ -30,7 +30,6 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'ARouter/Classes/**/*.{h,m}'
   s.frameworks = 'UIKit', 'Foundation'
 
   s.subspec 'Core' do |core|

@@ -10,4 +10,5 @@
 
 @interface AViewController : UIViewController
 
++ (void)hello;
 @end

@@ -10,6 +10,8 @@
 #import "ARouterProtocol.h"
 
 #import "ARouterProtocolPush.h"
+#import "ARouterProtocolPerform.h"
+
 
 @interface ARouter ()
 @property (nonatomic, strong) NSMutableSet* rules;
@@ -25,7 +27,7 @@ static ARouter *defaultRouter = nil;
     NSString* a2 = @"\n 自检完成..\n";
     
     NSLog(@"%@%@",a1,a2);
-    if ([[ARouter global].scheme isEqualToString:@"test"]) NSLog(@"\n[ARouter]Warning:我们发现scheme为默认的test!\n");
+    if ([APP_ROUTER.scheme isEqualToString:@"test"]) NSLog(@"\n[ARouter]Warning:我们发现scheme为默认的test!\n");
     
     NSLog(@"\n 从UIViewController动态增加了属性和方法:\n@selector(router_info)\n@selector(setupDefualtParams)\n@selector(custom_viewDidLoad)\n\n======================================\n ARouter \n======================================\n");
     
@@ -33,13 +35,14 @@ static ARouter *defaultRouter = nil;
     return YES;
 }
 
-+ (instancetype)global
++ (instancetype)default
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         defaultRouter = [[ARouter alloc] initWithDefualtSetting];
         
         [defaultRouter addRule:[ARouterProtocolPush new]];
+        [defaultRouter addRule:[ARouterProtocolPerform new]];
         defaultRouter.scheme = @"test";
     });
     
@@ -69,11 +72,11 @@ static ARouter *defaultRouter = nil;
 {
     NSURLComponents* components = [NSURLComponents componentsWithString:url];
     
-    if ([components.scheme isEqualToString:[ARouter global].scheme])
+    if ([components.scheme isEqualToString:APP_ROUTER.scheme])
     {
         NSString* operation = components.host;
         
-        for (ARouterProtocol* rule in [ARouter global].rules)
+        for (ARouterProtocol* rule in APP_ROUTER.rules)
         {
             if ([rule.operation isEqualToString:operation])
             {

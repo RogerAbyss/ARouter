@@ -27,7 +27,7 @@ pod "ARouter"
 
 设置scheme,默认为 **test**, 代表我只处理形如``test://xxx``的url,否则我给系统。
 ```
-[ARouter global].scheme = @"<!-Replace Me->";
+APP_ROUTER.scheme = @"<!-Replace Me->";
 ```
 
 自检
@@ -43,7 +43,7 @@ Then, Do things under protocol
 [scheme]://push?target=[target*taget*...]&info=[param]&[param]
 ```
 
-**你需要设置[ARouter global].nav**
+**你需要设置APP_ROUTER.nav**
 
 * 跳转
 ```
