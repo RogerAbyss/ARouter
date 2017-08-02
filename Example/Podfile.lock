@@ -1,9 +1,10 @@
 PODS:
-  - ARouter (0.1.0):
-    - ARouter/Core (= 0.1.0)
-    - ARouter/Json (= 0.1.0)
-  - ARouter/Core (0.1.0)
-  - ARouter/Json (0.1.0)
+  - ARouter (0.1.4):
+    - ARouter/Core (= 0.1.4)
+    - ARouter/Json (= 0.1.4)
+  - ARouter/Core (0.1.4):
+    - ARouter/Json
+  - ARouter/Json (0.1.4)
   - FBSnapshotTestCase (2.1.4):
     - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
   - FBSnapshotTestCase/Core (2.1.4)
@@ -19,7 +20,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  ARouter: 48fa159de0f5db41fee4ead357a1e991f1d9dd1b
+  ARouter: 7cae1a28bc54d9814801bb87f26c811bc8f639b5
   FBSnapshotTestCase: '094f9f314decbabe373b87cc339bea235a63e07a'
 
 PODFILE CHECKSUM: f74bd28c8a883bee8e9f6b9d3b4400fb584b4176

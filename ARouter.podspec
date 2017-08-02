@@ -33,8 +33,10 @@ Pod::Spec.new do |s|
   s.frameworks = 'UIKit', 'Foundation'
 
   s.subspec 'Core' do |core|
-    core.source_files = 'ARouter/Classes/Core/*','ARouter/Classes/ARouter.h'
-    core.public_header_files = 'ARouter/Classes/Core/*.h','ARouter/Classes/ARouter.h'
+    core.source_files = 'ARouter/Classes/Core/**/*','ARouter/Classes/ARouter.{h,m}'
+    core.public_header_files = 'ARouter/Classes/Core/**/*.h','ARouter/Classes/ARouter.h'
+
+    core.dependency 'ARouter/Json'
   end
 
   s.subspec 'Json' do |json|

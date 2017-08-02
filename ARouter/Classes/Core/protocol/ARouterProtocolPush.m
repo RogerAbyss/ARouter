@@ -10,7 +10,7 @@
 #import "ARouter.h"
 
 #import "UIViewController+ARouter.h"
-#import "JSONKit.h"
+#import <ARouter/JSONKit.h>
 
 static UINavigationController* default_router_nav = nil;
 
