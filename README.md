@@ -5,10 +5,13 @@
 [![License](https://img.shields.io/cocoapods/l/ARouter.svg?style=flat)](http://cocoapods.org/pods/ARouter)
 [![Platform](https://img.shields.io/cocoapods/p/ARouter.svg?style=flat)](http://cocoapods.org/pods/ARouter)
 
+**ARouter**是 **AFramework组件化框架**的组件之一, 其他组件也会慢慢的开源。
+(目前还在总结三年来的一切东西, 进行封装和模块化。测试稳定之后开源。)
+
 - [x] App之间互相跳转
 - [x] App根据后台参数全局跳转
 - [x] 动态修改属性方式,不用修改代码 
-- [ ] 路由策略以及算法优化性能
+- [ ] 路由策略以及算法优化性能(目前支持的协议少, 不需要算法优化性能)
 
 ## Example
 
